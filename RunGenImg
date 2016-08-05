@@ -1,0 +1,13 @@
+DataFolder=${PWD}
+cd ~/image_store/Scripts/PythonSrc/
+NameScript="GenImg"
+NameScriptPy=$NameScript".py"
+NameScriptCfg=$NameScript"Config.py"
+NoHupFile=$DataFolder"/"$NameScript".NoHup"
+rm -f $NoHupFile
+python  $NameScriptCfg $DataFolder
+nohup python $NameScriptPy $DataFolder > $NoHupFile&
+
+#python -i $NameScriptPy $DataFolder
+#python $NameScriptPy $DataFolder
+
