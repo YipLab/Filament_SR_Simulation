@@ -37,7 +37,7 @@ for kat in range(len(Folders)):
     for katN in FileNames:
         rnd.seed()
         print(katN)
-        Data=pd.read_csv(katN,header=None)
+        Data=pd.DataFrame.from_csv(katN)
         LenIdx = len(Data.index)
         #colors = cm.rainbow(np.linspace(0, 1, LenIdx))
         #pp.clf()
@@ -53,7 +53,7 @@ for kat in range(len(Folders)):
         Ypix=int(np.ceil(DY/RendRes))+Padd*2
         RendImg=np.zeros([Ypix,Xpix])
         for katIdx in range(len(Data.index)):
-            XY=np.squeeze(Data.loc[[katIdx]].values)  
+            XY=np.squeeze(Data.iloc[[katIdx]].values)  
             XY=XY[~np.isnan(XY)]
             X0=XY[0]
             Y0=XY[1]

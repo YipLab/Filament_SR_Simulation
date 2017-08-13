@@ -36,13 +36,12 @@ for kat in range(len(Folders)):
     os.mkdir(FolderBund)
     FileNames=gb.glob('Filament*.csv')
     for katN in FileNames:
-        DataRoot=pd.read_csv(katN,header=None)
+        DataRoot=pd.DataFrame.from_csv(katN)
         BundleIds=rnd.sample(FileNames,BundleNum-1)
         print(katN)
         Count=1
         for katNbd in BundleIds: 
-            #Data=pd.DataFrame.from_csv(katNbd,header=None)
-            Data=pd.read_csv(katNbd,header=None)
+            Data=pd.DataFrame.from_csv(katNbd)
             #katkat
             Cols=Data.columns
             MaxCol=Cols.max()##max((Data.columns.values).astype(int))
@@ -57,18 +56,18 @@ for kat in range(len(Folders)):
             Data.loc[:,Cols[ColArr]]+=BundleSpcing*Count
             Count+=1
             DataRoot=DataRoot.append(Data)
-        Col2=DataRoot.columns.values
-        print('Columns2: ')
-        print(Col2)
-        '''print('Columns2: ')
+        '''Col2=DataRoot.columns.values.astype(np.int8)
         print(Col2.shape)
         print(Col2[0])
+        print('Columns2: ')
+        print(Col2)
+        print('Columns2: ')
         print(Col2.sort())#df.sort_index(inplace=True)
         Col2=Col2.sort()'''
         #Col2.sort(key=float)
         #Col2.astype(str)
         #print('Columns2: '+ str(Col2))
-        DataRoot.to_csv(FolderBund+katN[0:len(katN)-4]+'_Bundle.csv',index=False,header=None)#,columns = Col2
+        DataRoot.to_csv(FolderBund+katN[0:len(katN)-4]+'_Bundle.csv')#,columns = Col2
     os.chdir('../')
 
 

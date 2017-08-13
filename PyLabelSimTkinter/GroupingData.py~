@@ -5,8 +5,6 @@
 #import matplotlib.cm as cm
 #import random as rnd
 Folders=[]
-print(FolderName)
-FoldOut=os.getcwd()
 os.chdir(FolderName)
 
 
@@ -52,4 +50,4 @@ for kat in range(len(Folders)):
         #pp.savefig(katN[0:len(katN)-4]+'.png')
     os.chdir('../')
 
-os.chdir(FoldOut)
+os.chdir('/home/yipgroup/image_store/Scripts/PyLabelSim/')

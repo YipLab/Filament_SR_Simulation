@@ -109,6 +109,6 @@ def FilCall(MFil,MFilLth,ABLabEff,LenFil,AB1LabPerLoc,AB2LabPerLoc,ABFlPerLabMin
         MaxLabls=MaxLab(MFilLab)
         Cols=range(MaxLabls)
         OutPut=LstToDF(MFilLab,MFilIdx,Cols)
-        OutPut.to_csv(ABFolder+'Filament'+str(katIt)+'_'+str(MFilLth)+'um.csv')
+        OutPut.to_csv(ABFolder+'Filament'+str(katIt)+'_'+str(MFilLth)+'um.csv',index=False,header=None)
 
 

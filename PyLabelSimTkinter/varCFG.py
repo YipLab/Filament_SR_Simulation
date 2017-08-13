@@ -1,12 +1,12 @@
-﻿if  CheckVarExt.get():
-    MFilLth=Data[:,0].max()
-    PosSort=np.argsort(Data[:,0],0)
-    TrueSpc=np.diff(Data[PosSort,0]).mean()
-    LenFil=len(Data[:,0])
-else:
-    MFilLth=float(MFilLth.get()) #[um] Filament length 
-    TrueSpc=float(TrueSpc.get())#[um] underlying periodicity
-    LenFil=len(range(0,MFilLth,TrueSpc))#LenFil=int(MFilLth/TrueSpc)+1
+﻿#if  CheckVarExt.get():
+#    MFilLth=Data[:,0].max()
+#    PosSort=np.argsort(Data[:,0],0)
+#    TrueSpc=np.diff(Data[PosSort,0]).mean()
+#    LenFil=len(Data[:,0])
+#else
+MFilLth=float(MFilLth.get()) #[um] Filament length 
+TrueSpc=float(TrueSpc.get())#[um] underlying periodicity
+LenFil=len(np.arange(0,MFilLth,TrueSpc))#LenFil=int(MFilLth/TrueSpc)+1
 
  ##Length of array for filament coordinates                                                            
 

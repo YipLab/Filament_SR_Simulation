@@ -13,7 +13,7 @@ from LabelingSimulationFunctions import *
 
 def ButtonAct(boxList1,boxList2,boxList3,boxList4):
     checkboxList=np.asarray([boxList1,boxList2,boxList3,boxList4])
-    checkboxListNam=np.asarray(['Bundles','Images','Plots','ThunderStorm'])
+    checkboxListNam=np.asarray(['ThunderStorm','Bundles','Images','Plots'])
     Sel=checkboxListNam[checkboxList>0]
     FileCFG='varCFG.py'
     SimRun='LabelingSimulationRun.py'
@@ -27,7 +27,7 @@ def ButtonAct(boxList1,boxList2,boxList3,boxList4):
 
 def ButtonCheck(boxList1,boxList2,boxList3,boxList4):
     checkboxList=np.asarray([boxList1,boxList2,boxList3,boxList4])
-    checkboxListNam=np.asarray(['Bundles','Images','Plots','ThunderStorm'])
+    checkboxListNam=np.asarray(['ThunderStorm','Bundles','Images','Plots'])
     Sel=checkboxListNam[checkboxList>0]
     LenFil=int(MFilLth/TrueSpc)+1 ##Length of array for filament coordinates
     print(checkboxList>0)
@@ -60,10 +60,11 @@ CheckVar3 = IntVar()
 CheckVar4 = IntVar()
 
 
-C1 = Checkbutton(top, text = "Bundles", variable = CheckVar1, onvalue = 1, offvalue = 0, height=0, width = 15)
-C2 = Checkbutton(top, text = "Images", variable = CheckVar2, onvalue = 1, offvalue = 0, height=0, width = 15)
-C3 = Checkbutton(top, text = "Plots", variable = CheckVar3, onvalue = 1, offvalue = 0, height=0, width = 15)
-C4 = Checkbutton(top, text = "ThunderStorm", variable = CheckVar4, onvalue = 1, offvalue = 0, height=0, width = 15)
+C1 = Checkbutton(top, text = "ThunderStorm", variable = CheckVar1, onvalue = 1, offvalue = 0, height=0, width = 15)
+C2 = Checkbutton(top, text = "Bundles", variable = CheckVar2, onvalue = 1, offvalue = 0, height=0, width = 15)
+C3 = Checkbutton(top, text = "Images", variable = CheckVar3, onvalue = 1, offvalue = 0, height=0, width = 15)
+C4 = Checkbutton(top, text = "Plots", variable = CheckVar4, onvalue = 1, offvalue = 0, height=0, width = 15)
+
 
 
 bottomframe = Frame(top)
@@ -85,11 +86,11 @@ SimulSets = ttk.PanedWindow(top, orient=VERTICAL)
 f1 = ttk.Labelframe(SimulSets, text='Simulation Settings', width=200, height=200)
 SimulSets.add(f1)
 SimulSets.grid(row=1,column=5,rowspan=2,padx=50)
-MFilLth=add_entry(f1, text="Filament length [um]", default='1')
+MFilLth=add_entry(f1, text="Filament length [um]", default='20')
 TrueSpc=add_entry(f1, text="Underlying periodicity [um]", default='0.035')
-Iter=add_entry(f1, text="Iterations [int]", default='5')
+Iter=add_entry(f1, text="Iterations [int]", default='100')
 BundleSpacing=add_entry(f1, text="Bundle interfilament spacing [um]", default='0.005')
-BundleNum=add_entry(f1, text="Maximum Number of filaments in a Bundle [int]", default='4')
+BundleNum=add_entry(f1, text="Maximum Number of filaments in a Bundle [int]", default='100')
 RendRes=add_entry(f1, text="Resolution of rendred images [um]", default='0.001')
 
 Mods=ttk.Notebook(top)

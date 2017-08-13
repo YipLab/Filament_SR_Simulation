@@ -30,7 +30,7 @@ for kat in range(len(Folders)):
     FileNames=gb.glob('Filament*.csv')
     for katN in FileNames:
         print(katN)
-        Data=pd.read_csv(katN,header=None)
+        Data=pd.DataFrame.from_csv(katN)
         print(Data.columns)
         LenIdx = len(Data.index)
         colors = cm.rainbow(np.linspace(0, 1, LenIdx))

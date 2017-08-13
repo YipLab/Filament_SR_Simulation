@@ -67,7 +67,7 @@ class FilamentSimulationGUI(BaseWidget):
         self._RendRes = ControlText('Resolution of rendred images [um]', '0.001')
         self._button        = ControlButton('Run Simulation')
         self._checkboxList = ControlCheckBoxList('Extra settings')
-        self._checkboxList.value = [('ThunderStorm', True), ('Bundles', True), ('Images', True), ('Plots', False)]
+        self._checkboxList.value = [('Bundles', True), ('ThunderStorm', True), ('Images', True), ('Plots', False)]
 
         
         self._button.value = self.__buttonAction
@@ -85,24 +85,17 @@ class FilamentSimulationGUI(BaseWidget):
     def __buttonAction(self):
         FileCFG='varCFG.py'
         SimRun='LabelingSimulationRun.py'
-        #for katSlf in self._checkboxList.value:
-        #    print(katSlf)
-        #    print(str(sorted(self._checkboxList.value)))
-        #"""Button action event"""
+        #print(self._checkboxList.value)
+        """Button action event"""
         #self.saveWindow()
         execfile(FileCFG)
         #print(self._FPFolder, self._NB2LabPerLoc,self._ABLabEff)
         execfile(SimRun)#os.system("python LabelingSimulation.py")#self._fullname.value = self._firstname.value +" "+ self._middlename.value +" "+self._lastname.value
         for katSlf in self._checkboxList.value:
-            if katSlf=='ThunderStorm':
-                ExtraRun2=katSlf+'Run.py'
-            else:
-                ExtraRun=katSlf+'Run.py'
-                print(ExtraRun)
-                execfile(str(ExtraRun))
-        if  ExtraRun2=='ThunderStormRun.py':
+            ExtraRun=katSlf+'Run.py'
             print(ExtraRun)
             execfile(str(ExtraRun))
+    
 #Execute the application
 if __name__ == "__main__":   
     Var = pyforms.startApp( FilamentSimulationGUI )

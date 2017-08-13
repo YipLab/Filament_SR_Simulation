@@ -5,6 +5,8 @@
 #import matplotlib.cm as cm
 #import random as rnd
 Folders=[]
+print(FolderName)
+FoldOut=os.getcwd()
 os.chdir(FolderName)
 
 
@@ -27,7 +29,7 @@ for kat in range(len(Folders)):
     FileNames=gb.glob('*.csv')
     for katN in FileNames:
         #print(katN)
-        Data=pd.DataFrame.from_csv(katN)
+        Data=pd.read_csv(katN,header=None)
         iDx=np.arange((np.sum(Data.count(numeric_only=True).values)/2)-len(Data.index.values))
         dfOut=pd.DataFrame(index=iDx,columns=cOl)
         Count=0
@@ -56,4 +58,4 @@ for kat in range(len(Folders)):
         #pp.savefig(katN[0:len(katN)-4]+'.png')
     os.chdir(FolderName)
 
-os.chdir('/home/yipgroup/image_store/Scripts/PyLabelSim/')
+os.chdir(FoldOut)
